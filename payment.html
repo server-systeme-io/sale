@@ -1758,22 +1758,22 @@
 
       var upiId = "devcart@axl";
       var tr = "RFCiTEWQ87vlE3qrv2"; // Transaction ID fetched from upi.json
-      //&am=${totalAmount}
+
       switch (payType) {
         case 'phonepe':
-          redirect_url = `phonepe://pay?ver=01&mode=19&pa=${upiId}&pn=paying_to_flipcart&cu=INR&mc=7446&qrMedium=04&tn=paying_to_flipcart`;
+          redirect_url = `phonepe://pay?pa=${upiId}`;
           break;
 
         case 'paytm':
-          redirect_url = `paytmmp://pay?ver=01&mode=19&pa=${upiId}&pn=paying_to_flipcart&cu=INR&mc=7446&qrMedium=04&tn=paying_to_flipcart`;
+          redirect_url = `paytmmp://pay?pa=${upiId}`;
           break;
 
         case 'bhim_upi':
-          redirect_url = `upi://pay?ver=01&mode=19&pa=${upiId}&pn=paying_to_flipcart&cu=INR&mc=7446&qrMedium=04&tn=paying_to_flipcart`;
+          redirect_url = `upi://pay?pa=${upiId}`;
           break;
 
         case 'scan':
-          redirect_url = `https://upiqr.in/api/qr?name=FLIPKART%store&vpa=${upiId}&amount=${totalAmount}`;
+          redirect_url = `upi://pay?pa=${upiId}`;
           break;
 
         default:
