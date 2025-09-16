@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Products in One File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://dailyofferday.shop/img/small-logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      background-color: #F1F2F4;
+      margin: 0;
+      padding: 0;
+    }
+    .share-icon {
+      display: block;
+      background-color: #fff;
+      border-radius: 18px;
+      position: absolute;
+      right: 0;
+      border: 1px solid #eee;
+      padding: 10px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .d-flex {
+      cursor: pointer;
+    }
+    .btn-check {
+      display: none;
+    }
+    .btn {
+      border: 2px solid #ccc;
+      max-width: 100px;
+      color: rgb(51, 51, 51);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .btn:hover {
+      background-color: transparent;
+      color: #2874F0;
+    }
+    .btn-check:checked+label,
+    .btn-check.active+label {
+      border-color: #4184FB;
+      box-shadow: none;
+      color: #2874F0;
+    }
+    .fixed-bottom-custom {
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.459);
+    }
+    a.stretched-link {
+      text-decoration: none;
+      color: inherit;
+    }
+    .carousel-item {
+      max-height: 400px; 
+      min-height: 400px;
+    }
+    .carousel-item img {
+      object-fit: cover; 
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-light" style="background-color: #2874F0;">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div class="d-flex" style="align-items: center;">
+          <svg width="19" height="16" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.556 7.847H1M7.45 1L1 7.877l6.45 6.817" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+          </svg>
+          <img src="img/brand.png" width="70px" class="ms-3" title="Flipkart">
+        </div>
+      </a>
+      <div class="d-flex">
+        <div class="ms-auto">
+          <svg class="me-3" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#FFF" fill-rule="evenodd">
+              <path d="m11.618 9.897l4.225 4.212c.092.092.101.232.02.313l-1.465 1.46c-.081.081-.221.072-.314-.02l-4.216-4.203"></path>
+              <path d="m6.486 10.901c-2.42 0-4.381-1.956-4.381-4.368 0-2.413 1.961-4.369 4.381-4.369 2.42 0 4.381 1.956 4.381 4.369 0 2.413-1.961 4.368-4.381 4.368m0-10.835c-3.582 0-6.486 2.895-6.486 6.467 0 3.572 2.904 6.467 6.486 6.467 3.582 0 6.486-2.895 6.486-6.467 0-3.572-2.904-6.467-6.486-6.467"></path>
+            </g>
+          </svg>
+          <svg width="16" height="16" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#fff" fill-rule="evenodd">
+              <path d="m5.189 13.04c0 .996-.791 1.804-1.767 1.804-.976 0-1.767-.808-1.767-1.804 0-.996.791-1.804 1.767-1.804.976 0 1.767.808 1.767 1.804"></path>
+              <path d="m14.912 2.259h-14.298l2.247 6.917c.042.129.16.216.293.216h8.06c-.064.69-.629 1.841-1.702 1.841h-6.04l1.072 1.991h5.611c1.881 0 2.938-2.278 3.657-4.719.888-3.01 1.219-6.245 1.106-6.245"></path>
+              <path d="m.615 2.259l-.592-1.828c-.08-.207.069-.431.287-.431h1.482c.126 0 .24.079.287.198l.682 2.061c0 0-.63 1.642-1.942.066"></path>
+              <path d="m2.262.756c0 0 .498 1.503 2.234 1.503l-1.736.749-1.104-.749.607-1.503"></path>
+              <path d="m13.424 13.325c0 .837-.664 1.516-1.484 1.516-.82 0-1.484-.679-1.484-1.516 0-.837.664-1.516 1.484-1.516.82 0 1.484.679 1.484 1.516"></path>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid" id="all-products"></div>
+  <script>
+    var products = [
+      {
+        id: "1",
+        title: "OnePlus Buds Pro 2 Bluetooth Headset (Arbor Green, True Wireless)",
+        price: "139",
+        originalPrice: "13999",
+        discount: "99",
+        images: [
+          "https://rukminim2.flixcart.com/image/832/832/xif0q/headphone/z/l/f/buds-pro-2-oneplus-original-imaghtn6pfhr9yya.jpeg?q=70&crop=false",
+          "https://rukminim2.flixcart.com/image/832/832/xif0q/headphone/q/6/c/buds-pro-2-oneplus-original-imaghtn6fwuf8hth.jpeg?q=70&crop=false",
+          "https://rukminim2.flixcart.com/image/832/832/xif0q/headphone/l/i/q/buds-pro-2-oneplus-original-imaghtn6df2rdveb.jpeg?q=70&crop=false",
+          "https://rukminim2.flixcart.com/image/832/832/xif0q/headphone/x/g/m/-original-imagnth53aukzbth.jpeg?q=70&crop=false",
+          "https://rukminim2.flixcart.com/image/832/832/xif0q/headphone/k/n/x/buds-pro-2-oneplus-original-imaghtn6dpbvkyhm.jpeg?q=70&crop=false"
+        ],
+        colors: [
+          {
+            name: "Arbor Green",
+            image: "https://rukminim2.flixcart.com/image/832/832/xif0q/headphone/z/l/f/buds-pro-2-oneplus-original-imaghtn6pfhr9yya.jpeg?q=70&crop=false"
+          },
+          {
+            name: "Obsidian Black",
+            image: "https://rukminim2.flixcart.com/image/832/832/xif0q/headphone/k/9/j/buds-pro-2-oneplus-original-imaghtn8geqzfvj7.jpeg?q=70&crop=false"
+          }
+        ],
+        description: "OnePlus Buds Pro 2 Bluetooth Headset  (Arbor Green, True Wireless)",
+        details: "A new version of the 169 firmware is now available. The latest release optimizes sound quality.\nModel Name: Buds Pro 2\nColor: Arbor Green\nType: True Wireless\nWarranty: 1 Year",
+        replacement: "public/replacement.webp",
+        noCod: "public/non-cod.webp",
+        assured: "public/plue-fassured.webp",
+        paymentImage: "public/pay-latter.webp"
+      },
+      {
+        id: "2",
+        title: "Noise Colorfit Icon 2 1.8'' Display",
+        price: "179",
+        originalPrice: "5999",
+        discount: "99",
+        images: [
+          "https://rukminim2.flixcart.com/image/832/832/l5ld8y80/smartwatch/r/q/t/-original-imagg8dksgct9hxg.jpeg?q=70&crop=false",
+          "https://rukminim2.flixcart.com/image/832/832/l5ld8y80/smartwatch/z/h/m/-original-imagg8dkq3fshkwh.jpeg?q=70&crop=false"
+        ],
+        colors: [
+          {
+            name: "Black",
+            image: "https://rukminim2.flixcart.com/image/832/832/l5ld8y80/smartwatch/r/q/t/-original-imagg8dksgct9hxg.jpeg?q=70&crop=false"
+          },
+          {
+            name: "Blue",
+            image: "https://rukminim2.flixcart.com/image/832/832/l5ld8y80/smartwatch/n/i/m/-original-imagg8dddyyzjnxn.jpeg?q=70&crop=false"
+          }
+        ],
+        description: "Noise Colorfit Icon 2 1.8'' Display with Bluetooth Calling",
+        details: "Bluetooth Calling, AI Voice Assistant, 60 Sports Mode, 1 Year Warranty",
+        replacement: "public/replacement.webp",
+        noCod: "public/non-cod.webp",
+        assured: "public/plue-fassured.webp",
+        paymentImage: "public/pay-latter.webp"
+      }
+    ];
+    var container = document.getElementById('all-products');
+    products.forEach(function(product, idx){
+      var uniqueCarouselId = "carousel-" + product.id;
+      var firstItemId = "first-" + product.id;
+      var cartId = "cart-" + product.id;
+      var colorElems = "";
+      product.colors.forEach(function(c, i){
+        var defaultBorder = i === 0 ? "border-color:#4185fbc9;" : "border-color:gray;";
+        colorElems += `
+          <div class="p-3 text-center me-2" onclick="changeColor('${product.id}', ${i})"
+               data-color="${i}" style="border: 1px solid; border-radius: 0.6rem; max-width: 100px; box-shadow: 1px 1px 2px #4185fbc9; ${defaultBorder}"
+               id="color-${product.id}-${i}">
+            <img class="img-fluid mb-2" style="max-width: 70px;" id="colorImg-${product.id}-${i}" src="${c.image}">
+            <p class="mb-0">${c.name}</p>
+          </div>
+        `;
+      });
+      var imagesHtml = "";
+      product.images.forEach(function(img, i){
+        var activeClass = i === 0 ? "active" : "";
+        imagesHtml += `
+          <div class="carousel-item ${activeClass}" style="max-height:400px; min-height:400px;">
+            <div class="d-flex" style="height: 400px;">
+              <img src="${img}" class="d-block img-fluid m-auto" alt="Product Image" id="img-${product.id}-${i}">
+            </div>
+          </div>
+        `;
+      });
+      var firstImgSrc = product.images[0];
+      var finalHtml = `
+        <div class="row border p-1 bg-white">
+          <div id="${uniqueCarouselId}" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              ${imagesHtml}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#${uniqueCarouselId}" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#${uniqueCarouselId}" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div class="text-start mt-3">
+            <h6 class="fw-bold">Select Color</h6>
+            <div class="d-flex">
+              ${colorElems}
+            </div>
+          </div>
+        </div>
+        <div class="row p-2 my-2 bg-white">
+          <p style="font-weight: 100;">${product.description}</p>
+          <div class="d-flex">
+            <h5 class="me-2 fw-bold">₹${product.price}</h5>
+            <h5 class="me-2 text-muted fw-bold text-decoration-line-through">₹${product.originalPrice}</h5>
+            <h5 class="me-1 fw-bold" style="color:#008C00">${product.discount}% off</h5>
+          </div>
+        </div>
+        <div class="row bg-white d-flex p-3 mb-1 mt-2 border">
+          <img class="m-auto" src="${product.paymentImage}">
+        </div>
+        <div class="row py-2 bg-white border mt-1">
+          <div class="col-4 d-flex flex-column text-center">
+            <img class="m-auto mb-2" width="30px" src="${product.replacement}">
+            <p class="m-0" style="font-size: 0.6rem;">7 days Replacement</p>
+          </div>
+          <div class="col-4 d-flex flex-column text-center">
+            <img class="m-auto mb-2" width="30px" src="${product.noCod}">
+            <p class="m-0" style="font-size: 0.6rem;">No Cash On Delivery</p>
+          </div>
+          <div class="col-4 d-flex flex-column text-center">
+            <img class="m-auto" width="70px" src="${product.assured}">
+            <p class="m-0" style="font-size: 0.6rem;">Plus (F-Assured)</p>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col bg-white border p-3">
+            <p class="fw-bold">Product Detail</p>
+            <p>${product.details}</p>
+          </div>
+        </div>
+        <div class="fixed-bottom row fixed-bottom-custom mb-5" style="box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.459);">
+          <div class="position-relative d-flex">
+            <div class="col-6 p-3 d-flex bg-white">
+              <p class="m-auto" style="font-weight: 100;">Add to Cart</p>
+            </div>
+            <div class="col-6 p-3 d-flex position-relative" style="background-color:#FFC200">
+              <p class="m-auto" style="font-weight: 100;">Buy Now</p>
+            </div>
+            <a href="save-address.html" class="stretched-link" id="${cartId}"></a>
+          </div>
+        </div>
+        <div class="mb-5"></div>
+      `;
+      container.insertAdjacentHTML('beforeend', finalHtml);
+    });
+    function changeColor(productId, colorIndex) {
+      var colorBox = document.getElementById("color-" + productId + "-" + colorIndex);
+      var colorBoxes = document.querySelectorAll("[id^='color-" + productId + "']");
+      for(var i=0; i<colorBoxes.length; i++){
+        colorBoxes[i].style.borderColor = 'gray';
+      }
+      colorBox.style.borderColor = '#4185fbc9';
+      var carouselItems = document.querySelectorAll("#carousel-" + productId + " .carousel-item");
+      for(var j=0; j<carouselItems.length; j++){
+        carouselItems[j].classList.remove('active');
+      }
+      carouselItems[0].classList.add('active');
+      var mainImg = document.querySelector("#carousel-" + productId + " .carousel-item.active img");
+      var newSrc = document.getElementById("colorImg-" + productId + "-" + colorIndex).src;
+      if(mainImg) mainImg.src = newSrc;
+      var cartLink = document.getElementById("cart-" + productId);
+      if(cartLink) cartLink.href = "save-address.html?productId=" + productId + "&color=" + colorIndex;
+    }
+  </script>
+  <script>
+    var btns = document.querySelectorAll('.btn-check');
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        btns.forEach(function(otherBtn) {
+          otherBtn.classList.remove('active');
+        });
+        this.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
